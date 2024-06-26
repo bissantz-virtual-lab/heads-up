@@ -301,7 +301,7 @@ function startPage() {
     rotate(HALF_PI);
     imageMode(CENTER);
     tint(0);
-    image(img, width / 2, height / 7, width / 2.5, width / 25);
+    image(img, 0, -width / 3.5, width / 2.5, width / 25);
     h1("#000000", "Heads Up!", false);
     if (pointsA <= 0) pointsA = 0;
     translate(0, 0, -40);
@@ -383,7 +383,7 @@ function over() {
   translate(0, 0, 100);
   imageMode(CENTER);
   tint(255);
-  image(img, width / 2, height / 7, width / 2.5, width / 25);
+  image(img, 0, -width / 3.5, width / 2.5, width / 25);
   h1("#ffffff", pointsA + " : " + pointsB, false);
   translate(0, 0, -40);
   h2("#ffffff", "Gut gespielt!");
