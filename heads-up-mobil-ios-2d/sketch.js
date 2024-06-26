@@ -242,7 +242,7 @@ function setup() {
 function draw() {
   if (!permissionGranted) {
     computer();
-    //return;
+    return;
   }
 
   R = int(rotationY * 100);
