@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/addons/p5.sound.min.js"></script>
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <link
       rel="icon"
       type="image/x-icon"
@@ -17,7 +16,6 @@
         margin: 0;
         padding: 0;
       }
-
       body {
         display: flex;
         justify-content: center;
@@ -26,7 +24,6 @@
         color: rgb(50, 50, 50);
         background-color: rgb(247, 247, 247);
       }
-
       .vertical-center {
         position: absolute;
         top: 50%;
@@ -68,45 +65,21 @@
         background: rgb(50, 50, 50);
       }
     </style>
-    <script>
-      function preload() {
-        imgBVL = loadImage("./bvl_Logo.png");
-      }
-
-      function setup() {
-        createCanvas(windowWidth, windowHeight);
-      }
-
-      function draw() {
-        bg("#ffffff");
-        //logo(0);
-      }
-
-      function logo(col) {
-        imageMode(CENTER);
-        tint(col);
-        image(imgBVL, width / 2, height / 2, 420, 43);
-      }
-
-      function windowResized() {
-        resizeCanvas(windowWidth, windowHeight);
-      }
-    </script>
   </head>
   <body>
     <div class="vertical-center">
       <h2>Hi,</h2>
         <br />
-        auf dem Portal für das Spiel ‘Heads Up!'.<br /><br />
+        hier für das Spiel ‘Heads Up!'.<br /><br />
       </p>
       <a href="./heads-up-mobil-ios-webgl">Mobil (iOS) </a>
       <a href="./heads-up-mobil-android-webgl">Mobil (Android) </a>
       <p><br /><br /><br />
-      Hier noch leichtere Version:<br /><br /></p>
+      und eine leichtere Version:<br /><br /></p>
       <a href="./heads-up-mobil-ios-2d">Mobil 2D (iOS)</a>
       <a href="./heads-up-mobil-android-2d">Mobil 2D (Android)</a>
       <p><br /><br />
-      und auch für Desktop, viel Spaß! :D<br /><br /></p>
+      sogar Desktop, viel Spaß! :D<br /><br /></p>
       <a href="./heads-up-desktop-webgl">Desktop</a>
     </div>
   </body>
