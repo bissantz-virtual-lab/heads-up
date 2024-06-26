@@ -198,8 +198,7 @@ let rounds = 3;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-//let sectionTimeOut = 90000; //1s (1000 milliseconds)
-let sectionTimeOut = 5000;
+let sectionTimeOut = 90000; //1s (1000 milliseconds)
 let bar = 0;
 
 let playerA = true;
@@ -318,6 +317,11 @@ function shuffleArray(array) {
 
 function computer() {
   card("#002d71");
+
+  imageMode(CENTER);
+  tint(255);
+  image(img, 0, -height / 2.8, width / 2.5, width / 25);
+
   h1Com("#ffffff", "Hallo!");
   h2Com("#ffffff", "Bist du auf iOS?");
   descriptionCom(

@@ -195,8 +195,7 @@ let bar = 0;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-//let sectionTimeOut = 90000; //1s (1000 milliseconds)
-let sectionTimeOut = 5000; //1s (1000 milliseconds)
+let sectionTimeOut = 90000; //1s (1000 milliseconds)
 
 let playerA = true;
 let pointsA = 0;
@@ -321,6 +320,11 @@ function shuffleArray(array) {
 
 function computer() {
   bg("#002d71");
+
+  imageMode(CENTER);
+  tint(255);
+  image(img, width / 2, height / 7, width / 2.5, width / 25);
+
   h1Com("#ffffff", "Hallo!");
   h2Com("#ffffff", "Bist du auf iOS?");
   descriptionCom(
@@ -335,6 +339,9 @@ function startPage() {
     push();
     translate(width / 2, height / 2);
     rotate(HALF_PI);
+    imageMode(CENTER);
+    tint(0);
+    image(img, 0, -width / 3.5, width / 2.5, width / 25);
     h1("#000000", "Heads Up!", false);
     if (pointsA <= 0) pointsA = 0;
     h2("#000000", "Tippe zum Start. ");
@@ -393,7 +400,9 @@ function pause() {
   push();
   translate(width / 2, height / 2);
   rotate(HALF_PI);
-  logo(0);
+  imageMode(CENTER);
+  tint(0);
+  image(img, 0, -width / 3.5, width / 2.5, width / 25);
   if (playerA === true) {
     h3("#002d71", "Team Blau");
     h1("#002d71", "Punkte: " + pointsA, false);
@@ -414,7 +423,9 @@ function over() {
   push();
   translate(width / 2, height / 2);
   rotate(HALF_PI);
-
+  imageMode(CENTER);
+  tint(0);
+  image(img, 0, -width / 3.5, width / 2.5, width / 25);
   h1("#ffffff", pointsA + " : " + pointsB, false);
   h2("#ffffff", "Gut gespielt!");
   description("#ffffff", "Aktualisere die Seite, um das Spiel neu zu starten.");
