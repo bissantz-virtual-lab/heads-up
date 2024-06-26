@@ -190,11 +190,11 @@ let word = 0;
 let Regular, Bold, ExtraBold;
 let shuffledArray = [];
 
-let rounds = 1;
+let rounds = 0;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-let sectionTimeOut = 30000; // 30s // 1s (1000 milliseconds)
+let sectionTimeOut = 90000; // 30s // 1s (1000 milliseconds)
 let bar = 0;
 
 let playerA = true;
@@ -276,6 +276,9 @@ function startPage() {
     push();
     card("#ffffff");
     translate(0, 0, 200);
+    imageMode(CENTER);
+    tint(0);
+    image(img, 0, -height / 4, height / 6, height / 50);
     h1Content("#000000", "Heads Up!", false);
     translate(0, 0, -190);
     h2Content("#000000", "Hi, hier ist für Desktop!");
@@ -351,6 +354,9 @@ function over() {
   console.log("game over.");
   push();
   translate(0, 0, 200);
+  imageMode(CENTER);
+  tint(255);
+  image(img, 0, -height / 4, height / 6, height / 50);
   h1Content("#ffffff", pointsA + " : " + pointsB, false);
   translate(0, 0, -190);
   h2Content("#ffffff", "Gut gespielt!");
