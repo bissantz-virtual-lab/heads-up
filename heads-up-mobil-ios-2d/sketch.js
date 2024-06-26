@@ -195,8 +195,8 @@ let bar = 0;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-//let sectionTimeOut = 120000; //1s (1000 milliseconds)
-let sectionTimeOut = 10000; //1s (1000 milliseconds)
+let sectionTimeOut = 120000; //1s (1000 milliseconds)
+//et sectionTimeOut = 10000; //test
 
 let playerA = true;
 let pointsA = 0;
@@ -307,7 +307,7 @@ function h2(fCol, h2Text) {
 
 function h3(fCol, h3Text) {
   textFont(Bold);
-  textSize(height / 30);
+  textSize(height / 40);
   fill(fCol);
   textAlign(CENTER, CENTER);
   textWrap(WORD);
