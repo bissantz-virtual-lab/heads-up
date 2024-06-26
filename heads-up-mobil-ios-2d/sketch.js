@@ -195,7 +195,8 @@ let bar = 0;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-let sectionTimeOut = 60000; //1s (1000 milliseconds)
+//let sectionTimeOut = 120000; //1s (1000 milliseconds)
+let sectionTimeOut = 10000; //1s (1000 milliseconds)
 
 let playerA = true;
 let pointsA = 0;
@@ -224,7 +225,7 @@ function setup() {
       .catch(() => {
         let button = createButton("Sensor aktivieren");
         button.style(
-          "transform: translate(-50%, -50%);font-family: 'Open Sans'; font-weight: 600;font-size: 4vw; background-color: #ffffff;color: #be0019; padding: 1.5vh 3vh;border-radius: 8px;border: none;"
+          "transform: translate(-50%, -50%);font-family: 'Open Sans'; font-weight: 600;font-size: 4vw; background-color: #ffffff;color: #002d71; padding: 1.5vh 3vh;border-radius: 8px;border: none;"
         );
         button.position(width / 2, height * 0.72);
         button.mousePressed(requestAccess);
@@ -302,6 +303,16 @@ function h2(fCol, h2Text) {
   textWrap(WORD);
   textLeading(height / 20);
   text(h2Text, 0, height / 18, height - height / 5, width - height / 5);
+}
+
+function h3(fCol, h3Text) {
+  textFont(Bold);
+  textSize(height / 30);
+  fill(fCol);
+  textAlign(CENTER, CENTER);
+  textWrap(WORD);
+  textLeading(height / 20);
+  text(h3Text, 0, height / 30, height - height / 5, width - height / 5);
 }
 
 function descriptionCom(fCol, desText) {
@@ -470,8 +481,16 @@ function pause() {
   push();
   translate(width / 2, height / 2);
   rotate(HALF_PI);
-  if (playerA === true) h1("#ffffff", "Punkte: " + pointsA, false);
-  else h1("#ffffff", "Punkte: " + pointsB, false);
+
+  if (playerA === true) {
+    background("#be0019");
+    h3("#ffffff", "Team A");
+    h1("#ffffff", "Punkte: " + pointsA, false);
+  } else {
+    background("#002d71");
+    h3("#ffffff", "Team B");
+    h1("#ffffff", "Punkte: " + pointsB, false);
+  }
   h2("#ffffff", roundB + ". Runde");
   description("#ffffff", "Tausche aus und tippe zum Start.");
   pop();
@@ -499,7 +518,7 @@ function processBar() {
 }
 
 function bg(color) {
-  background("#f7f7f7");
+  //background("#f7f7f7");
   fill(color);
   noStroke();
   rectMode(CENTER);
