@@ -185,7 +185,7 @@ let words = [
   "AC/DC",
 ];
 let shuffledArray = [];
-let rounds = 1; // ------------------------ changable ------------------------ //
+let rounds = 3; // ------------------------ changable ------------------------ //
 
 let word = 0;
 let Regular, Bold, ExtraBold;
@@ -195,7 +195,7 @@ let bar = 0;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-let sectionTimeOut = 30000; //1s (1000 milliseconds)
+let sectionTimeOut = 60000; //1s (1000 milliseconds)
 
 let playerA = true;
 let pointsA = 0;
