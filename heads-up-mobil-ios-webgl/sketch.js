@@ -194,11 +194,12 @@ let shuffledArray = [];
 let word = 0;
 let Regular, Bold, ExtraBold;
 
-let rounds = 1;
+let rounds = 3;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-let sectionTimeOut = 30000; //1s (1000 milliseconds)
+//let sectionTimeOut = 90000; //1s (1000 milliseconds)
+let sectionTimeOut = 5000;
 let bar = 0;
 
 let playerA = true;
@@ -317,8 +318,8 @@ function shuffleArray(array) {
 
 function computer() {
   card("#002d71");
-  h1Com("#ffffff", "Hi,");
-  h2Com("#ffffff", "bist du auf iOS?");
+  h1Com("#ffffff", "Hallo!");
+  h2Com("#ffffff", "Bist du auf iOS?");
   descriptionCom(
     "#ffffff",
     "Zum Starten des Spiels bitte den Sensor aktivieren und das Gerät umdrehen."
@@ -391,7 +392,6 @@ function pause() {
   //console.log("one section over.");
   push();
   rotate(HALF_PI);
-
   if (playerA === true) {
     h3("#002d71", "Team Blau");
     h1("#002d71", "Punkte: " + pointsA, false);

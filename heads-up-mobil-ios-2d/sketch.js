@@ -195,8 +195,8 @@ let bar = 0;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-let sectionTimeOut = 90000; //1s (1000 milliseconds)
-//et sectionTimeOut = 10000; //test
+//let sectionTimeOut = 90000; //1s (1000 milliseconds)
+let sectionTimeOut = 5000; //1s (1000 milliseconds)
 
 let playerA = true;
 let pointsA = 0;
@@ -210,7 +210,6 @@ function preload() {
   Bold = loadFont("OpenSans-Bold.ttf");
   ExtraBold = loadFont("OpenSans-ExtraBold.ttf");
   img = loadImage("./Bissantz-Logo_1000x100px_weiss.png");
-  //img = loadImage("./bvl_Logo.png");
 }
 
 function setup() {
@@ -322,11 +321,6 @@ function shuffleArray(array) {
 
 function computer() {
   bg("#002d71");
-
-  imageMode(CENTER);
-  tint(255);
-  image(img, width / 2, height / 7, 200, 20);
-
   h1Com("#ffffff", "Hallo!");
   h2Com("#ffffff", "Bist du auf iOS?");
   descriptionCom(
@@ -341,9 +335,6 @@ function startPage() {
     push();
     translate(width / 2, height / 2);
     rotate(HALF_PI);
-    imageMode(CENTER);
-    tint(0);
-    image(img, 0, -width / 4, 200, 20);
     h1("#000000", "Heads Up!", false);
     if (pointsA <= 0) pointsA = 0;
     h2("#000000", "Tippe zum Start. ");
@@ -404,14 +395,14 @@ function pause() {
   rotate(HALF_PI);
   logo(0);
   if (playerA === true) {
-    // h3("#002d71", "Team Blau");
+    h3("#002d71", "Team Blau");
     h1("#002d71", "Punkte: " + pointsA, false);
-    h2("#002d71", roundB + ". Runde für Team Blau");
+    h2("#002d71", roundB + ". Runde");
     description("#002d71", "Tausche aus und tippe zum Start.");
   } else {
-    // h3("#be0019", "Team Rot");
+    h3("#be0019", "Team Rot");
     h1("#be0019", "Punkte: " + pointsB, false);
-    h2("#be0019", roundB + ". Runde für Team Blau");
+    h2("#be0019", roundB + ". Runde");
     description("#be0019", "Tausche aus und tippe zum Start.");
   }
   pop();
