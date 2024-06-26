@@ -140,7 +140,6 @@ let words = [
   "Babylon Berlin",
   "Leonardo DiCaprio",
   "Brad Pitt",
-  "Meryl Streep",
   "Tom Hanks",
   "Scarlett Johansson",
   "Robert Downey Jr.",
@@ -177,7 +176,6 @@ let words = [
   "The Big Bang Theory",
   "Seinfeld",
   "House of Cards",
-  "Grey’s Anatomy",
   "Led Zeppelin",
   "The Beatles",
   "The Rolling Stones",
@@ -185,9 +183,6 @@ let words = [
   "Pink Floyd",
   "Nirvana",
   "AC/DC",
-  "The Who",
-  "U2",
-  "The Eagles",
 ];
 let shuffledArray = [];
 let rounds = 1; // ------------------------ changable ------------------------ //
@@ -275,7 +270,7 @@ function h1(fCol, h1Text, pos) {
   textLeading(height / 12);
   if (pos === true) {
     textFont(Bold);
-    text(h1Text, 0, 0);
+    text(h1Text, 0, 0, height - height / 5, width - height / 5);
   }
   if (pos === false) {
     textFont(ExtraBold);

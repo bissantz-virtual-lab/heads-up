@@ -389,7 +389,7 @@ function h1(fCol, h1Text, pos) {
   textLeading(height / 12);
   if (pos === true) {
     textFont(Bold);
-    text(h1Text, -0, 0);
+    text(h1Text, -0, 0, height - height / 5, width - height / 5);
   }
   if (pos === false) {
     textFont(ExtraBold);
