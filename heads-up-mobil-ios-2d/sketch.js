@@ -400,9 +400,7 @@ function pause() {
   push();
   translate(width / 2, height / 2);
   rotate(HALF_PI);
-  imageMode(CENTER);
-  tint(0);
-  image(img, 0, -width / 3.5, width / 2.5, width / 25);
+
   if (playerA === true) {
     h3("#002d71", "Team Blau");
     h1("#002d71", "Punkte: " + pointsA, false);
@@ -424,7 +422,7 @@ function over() {
   translate(width / 2, height / 2);
   rotate(HALF_PI);
   imageMode(CENTER);
-  tint(0);
+  tint(255);
   image(img, 0, -width / 3.5, width / 2.5, width / 25);
   h1("#ffffff", pointsA + " : " + pointsB, false);
   h2("#ffffff", "Gut gespielt!");
