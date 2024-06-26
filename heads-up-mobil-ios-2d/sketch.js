@@ -237,6 +237,77 @@ function setup() {
   } else computer();
 }
 
+function draw() {
+  if (!permissionGranted) {
+    computer();
+    return;
+  }
+
+  R = int(rotationY * 100);
+  //console.log(int(rotationY * 100));
+
+  frameRate(60);
+  bg("#ffffff");
+  startPage();
+
+  if (millis() - sectionTime >= sectionTimeOut) {
+    sectionOn = false;
+  }
+  if (roundB >= rounds + 1) gameOn = false;
+  if (gameStarted === true && gameOn === false) over();
+  if (gameOn === true) {
+    if (sectionOn === false) {
+      pause();
+    }
+    if (sectionOn === true) {
+      game();
+      processBar();
+    }
+  }
+
+  if (pointsA <= 0) pointsA = 0;
+  if (pointsB <= 0) pointsB = 0;
+
+  //console.log("roundA: " + roundA + "; roundB: " + roundB);
+}
+
+function requestAccess() {
+  DeviceOrientationEvent.requestPermission()
+    .then((response) => {
+      if (response == "granted") {
+        permissionGranted = true;
+      } else {
+        permissionGranted = false;
+      }
+    })
+    .catch(console.error);
+  this.remove();
+}
+
+function touchStarted() {
+  if (permissionGranted) {
+    if (gameOn === false) {
+      gameStarted = true;
+      gameOn = true;
+      sectionOn = true;
+      bg("#ffffff");
+      time = millis();
+      sectionTime = millis();
+    }
+    if (gameOn === true && sectionOn === false) {
+      sectionOn = true;
+      sectionTime = millis();
+      if (playerA === true) {
+        roundA += 1;
+        playerA = false;
+      } else {
+        roundB += 1;
+        playerA = true;
+      }
+    }
+  }
+}
+
 function shuffleArray(array) {
   let shuffled = array.slice();
 
@@ -245,6 +316,108 @@ function shuffleArray(array) {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
   return shuffled;
+}
+
+function computer() {
+  bg("#002d71");
+  h1Com("#ffffff", "Hi,");
+  h2Com("#ffffff", "bist du auf iOS?");
+  descriptionCom(
+    "#ffffff",
+    "Zum Starten des Spiels bitte den Sensor aktivieren und das Gerät umdrehen."
+  );
+}
+
+function startPage() {
+  if (gameOn === false) {
+    bg("#ffffff");
+    push();
+    translate(width / 2, height / 2);
+    rotate(HALF_PI);
+    h1("#000000", "Heads Up!", false);
+    if (pointsA <= 0) pointsA = 0;
+    h2("#000000", "Tippe zum Start. ");
+    description(
+      "#000000",
+      "Nach oben klappen: Überspringen; Nach unten klappen: Richtig!"
+    );
+    pop();
+  }
+}
+
+function changeWord() {
+  word += 1;
+  if (word >= words.length) word = 0;
+}
+
+function game() {
+  push();
+  translate(width / 2, height / 2);
+  rotate(HALF_PI);
+  h1("#000000", shuffledArray[word], true);
+  pop();
+
+  if (R < -10 && R > -100) {
+    bg("#be0019");
+    push();
+    translate(width / 2, height / 2);
+    rotate(HALF_PI);
+    h1("#ffffff", "Überspringen.", true);
+    pop();
+    frameRate(3);
+    changeWord();
+    if (playerA === true) pointsA -= 1;
+    else pointsB -= 1;
+    //console.log("A win: " + pointsA + "; B win: " + pointsB);
+    time = millis();
+  } else if (R < 100 && R > 10) {
+    bg("#002d71");
+    push();
+    translate(width / 2, height / 2);
+    rotate(HALF_PI);
+    h1("#ffffff", "Richtig!", true);
+    pop();
+    frameRate(3);
+    changeWord();
+    if (playerA === true) pointsA += 1;
+    else pointsB += 1;
+    //console.log("A win: " + pointsA + "; B win: " + pointsB);
+    time = millis();
+  }
+}
+
+function pause() {
+  bg("#ffffff");
+  //console.log("one section over.");
+  push();
+  translate(width / 2, height / 2);
+  rotate(HALF_PI);
+
+  if (playerA === true) {
+    h3("#002d71", "Team Blau");
+    h1("#002d71", "Punkte: " + pointsA, false);
+    h2("#002d71", roundB + ". Runde");
+    description("#002d71", "Tausche aus und tippe zum Start.");
+  } else {
+    h3("#be0019", "Team Rot");
+    h1("#be0019", "Punkte: " + pointsB, false);
+    h2("#be0019", roundB + ". Runde");
+    description("#be0019", "Tausche aus und tippe zum Start.");
+  }
+  pop();
+}
+
+function over() {
+  bg("#002d71");
+  //console.log("game over.");
+  push();
+  translate(width / 2, height / 2);
+  rotate(HALF_PI);
+
+  h1("#ffffff", pointsA + " : " + pointsB, false);
+  h2("#ffffff", "Gut gespielt!");
+  description("#ffffff", "Aktualisere die Seite, um das Spiel neu zu starten.");
+  pop();
 }
 
 function h1Com(fCol, h1Text) {
@@ -341,174 +514,6 @@ function description(fCol, desText) {
   text(desText, 0, width / 4, height - height / 5, width - height / 5);
 }
 
-function computer() {
-  bg("#002d71");
-  h1Com("#ffffff", "Hi,");
-  h2Com("#ffffff", "bist du auf iOS?");
-  descriptionCom(
-    "#ffffff",
-    "Zum Starten des Spiels bitte den Sensor aktivieren und das Gerät umdrehen."
-  );
-}
-
-function requestAccess() {
-  DeviceOrientationEvent.requestPermission()
-    .then((response) => {
-      if (response == "granted") {
-        permissionGranted = true;
-      } else {
-        permissionGranted = false;
-      }
-    })
-    .catch(console.error);
-  this.remove();
-}
-
-function startPage() {
-  if (gameOn === false) {
-    bg("#ffffff");
-    push();
-    translate(width / 2, height / 2);
-    rotate(HALF_PI);
-    h1("#000000", "Heads Up!", false);
-    if (pointsA <= 0) pointsA = 0;
-    h2("#000000", "Tippe zum Start. ");
-    description(
-      "#000000",
-      "Nach oben klappen: Überspringen; Nach unten klappen: Richtig!"
-    );
-    pop();
-  }
-}
-
-function touchStarted() {
-  if (permissionGranted) {
-    if (gameOn === false) {
-      gameStarted = true;
-      gameOn = true;
-      sectionOn = true;
-      bg("#ffffff");
-      time = millis();
-      sectionTime = millis();
-    }
-    if (gameOn === true && sectionOn === false) {
-      sectionOn = true;
-      sectionTime = millis();
-      if (playerA === true) {
-        roundA += 1;
-        playerA = false;
-      } else {
-        roundB += 1;
-        playerA = true;
-      }
-    }
-  }
-}
-
-function draw() {
-  if (!permissionGranted) {
-    computer();
-    return;
-  }
-
-  R = int(rotationY * 100);
-  //console.log(int(rotationY * 100));
-
-  frameRate(60);
-  bg("#ffffff");
-  startPage();
-
-  if (millis() - sectionTime >= sectionTimeOut) {
-    sectionOn = false;
-  }
-  if (roundB >= rounds + 1) gameOn = false;
-  if (gameStarted === true && gameOn === false) over();
-  if (gameOn === true) {
-    if (sectionOn === false) {
-      pause();
-    }
-    if (sectionOn === true) {
-      game();
-      processBar();
-    }
-  }
-
-  if (pointsA <= 0) pointsA = 0;
-  if (pointsB <= 0) pointsB = 0;
-
-  //console.log("roundA: " + roundA + "; roundB: " + roundB);
-}
-
-function game() {
-  push();
-  translate(width / 2, height / 2);
-  rotate(HALF_PI);
-  h1("#000000", shuffledArray[word], true);
-  pop();
-
-  if (R < -10 && R > -100) {
-    bg("#be0019");
-    push();
-    translate(width / 2, height / 2);
-    rotate(HALF_PI);
-    h1("#ffffff", "Überspringen.", true);
-    pop();
-    frameRate(3);
-    changeWord();
-    if (playerA === true) pointsA -= 1;
-    else pointsB -= 1;
-    //console.log("A win: " + pointsA + "; B win: " + pointsB);
-    time = millis();
-  } else if (R < 100 && R > 10) {
-    bg("#002d71");
-    push();
-    translate(width / 2, height / 2);
-    rotate(HALF_PI);
-    h1("#ffffff", "Richtig!", true);
-    pop();
-    frameRate(3);
-    changeWord();
-    if (playerA === true) pointsA += 1;
-    else pointsB += 1;
-    //console.log("A win: " + pointsA + "; B win: " + pointsB);
-    time = millis();
-  }
-}
-
-function pause() {
-  bg("#ffffff");
-  //console.log("one section over.");
-  push();
-  translate(width / 2, height / 2);
-  rotate(HALF_PI);
-
-  if (playerA === true) {
-    h3("#002d71", "Team Blau");
-    h1("#002d71", "Punkte: " + pointsA, false);
-    h2("#002d71", roundB + ". Runde");
-    description("#002d71", "Tausche aus und tippe zum Start.");
-  } else {
-    h3("#be0019", "Team Rot");
-    h1("#be0019", "Punkte: " + pointsB, false);
-    h2("#be0019", roundB + ". Runde");
-    description("#be0019", "Tausche aus und tippe zum Start.");
-  }
-  pop();
-}
-
-function over() {
-  bg("#002d71");
-  //console.log("game over.");
-  push();
-  translate(width / 2, height / 2);
-  rotate(HALF_PI);
-
-  h1("#ffffff", pointsA + " : " + pointsB, false);
-  h2("#ffffff", "Gut gespielt!");
-  description("#ffffff", "Aktualisere die Seite, um das Spiel neu zu starten.");
-  pop();
-}
-
 function processBar() {
   fill("#969696");
   rectMode(CORNER);
@@ -529,11 +534,6 @@ function bg(color) {
     height - height / 10,
     height / 20
   );
-}
-
-function changeWord() {
-  word += 1;
-  if (word >= words.length) word = 0;
 }
 
 function windowResized() {

@@ -471,7 +471,7 @@ function h2(fCol, h2Text) {
 
 function h3(fCol, h3Text) {
   textFont(Bold);
-  textSize(height / 30);
+  textSize(height / 40);
   fill(fCol);
   textAlign(CENTER, CENTER);
   textWrap(WORD);
