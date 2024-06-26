@@ -190,7 +190,7 @@ let word = 0;
 let Regular, Bold, ExtraBold;
 let shuffledArray = [];
 
-let rounds = 0;
+let rounds = 4;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
@@ -323,8 +323,8 @@ function game() {
       h1Content("#ffffff", "Überspringen.", true);
       frameRate(3);
       changeWord();
-      if (playerA === true) pointsA -= 1;
-      else pointsB -= 1;
+      //if (playerA === true) pointsA -= 1;
+      //else pointsB -= 1;
       //console.log("A win: " + pointsA + "; B win: " + pointsB);
       time = millis();
     } else if (keyCode === DOWN_ARROW) {
