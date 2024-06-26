@@ -185,7 +185,7 @@ let words = [
   "AC/DC",
 ];
 let shuffledArray = [];
-let rounds = 3; // ------------------------ changable ------------------------ //
+let rounds = 4; // ------------------------ changable ------------------------ //
 
 let word = 0;
 let Regular, Bold, ExtraBold;
@@ -374,8 +374,8 @@ function game() {
     pop();
     frameRate(3);
     changeWord();
-    if (playerA === true) pointsA -= 1;
-    else pointsB -= 1;
+    //if (playerA === true) pointsA -= 1;
+    //else pointsB -= 1;
     //console.log("A win: " + pointsA + "; B win: " + pointsB);
     time = millis();
   } else if (R < 100 && R > 10) {
