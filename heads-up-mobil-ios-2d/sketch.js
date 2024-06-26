@@ -331,12 +331,12 @@ function description(fCol, desText) {
 }
 
 function computer() {
-  bg("#be0019");
+  bg("#002d71");
   h1Com("#ffffff", "Hi,");
-  h2Com("#ffffff", "bist du am Handy?");
+  h2Com("#ffffff", "bist du auf iOS?");
   descriptionCom(
     "#ffffff",
-    "Für die mobile Version aktiviere den Sensor und drehe dein Gerät um."
+    "Zum Starten des Spiels bitte den Sensor aktivieren und das Gerät umdrehen."
   );
 }
 
@@ -364,7 +364,7 @@ function startPage() {
     h2("#000000", "Tippe zum Start. ");
     description(
       "#000000",
-      "Nach oben klappen: Überspringen, nach unten klappen: Richtig!"
+      "Nach oben klappen: Überspringen; Nach unten klappen: Richtig!"
     );
     pop();
   }
