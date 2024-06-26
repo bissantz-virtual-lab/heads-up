@@ -312,7 +312,7 @@ function h3(fCol, h3Text) {
   textAlign(CENTER, CENTER);
   textWrap(WORD);
   textLeading(height / 20);
-  text(h3Text, 0, height / 30, height - height / 5, width - height / 5);
+  text(h3Text, 0, width / 10, height - height / 5, width - height / 5);
 }
 
 function descriptionCom(fCol, desText) {
@@ -476,23 +476,23 @@ function game() {
 }
 
 function pause() {
-  bg("#002d71");
+  bg("#ffffff");
   //console.log("one section over.");
   push();
   translate(width / 2, height / 2);
   rotate(HALF_PI);
 
   if (playerA === true) {
-    background("#be0019");
-    h3("#ffffff", "Team A");
-    h1("#ffffff", "Punkte: " + pointsA, false);
+    h3("#002d71", "Team Blau");
+    h1("#002d71", "Punkte: " + pointsA, false);
+    h2("#002d71", roundB + ". Runde");
+    description("#002d71", "Tausche aus und tippe zum Start.");
   } else {
-    background("#002d71");
-    h3("#ffffff", "Team B");
-    h1("#ffffff", "Punkte: " + pointsB, false);
+    h3("#be0019", "Team Rot");
+    h1("#be0019", "Punkte: " + pointsB, false);
+    h2("#be0019", roundB + ". Runde");
+    description("#be0019", "Tausche aus und tippe zum Start.");
   }
-  h2("#ffffff", roundB + ". Runde");
-  description("#ffffff", "Tausche aus und tippe zum Start.");
   pop();
 }
 
@@ -518,7 +518,7 @@ function processBar() {
 }
 
 function bg(color) {
-  //background("#f7f7f7");
+  background("#f7f7f7");
   fill(color);
   noStroke();
   rectMode(CENTER);
