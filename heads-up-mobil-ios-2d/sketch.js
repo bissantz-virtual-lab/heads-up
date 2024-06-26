@@ -312,7 +312,7 @@ function h3(fCol, h3Text) {
   textAlign(CENTER, CENTER);
   textWrap(WORD);
   textLeading(height / 20);
-  text(h3Text, 0, width / 10, height - height / 5, width - height / 5);
+  text(h3Text, 0, -width / 4, height - height / 5, width - height / 5);
 }
 
 function descriptionCom(fCol, desText) {
