@@ -353,14 +353,21 @@ function game() {
 }
 
 function pause() {
-  card("#002d71");
+  card("#ffffff");
   //console.log("one section over.");
   push();
   rotate(HALF_PI);
-  if (playerA === true) h1("#ffffff", "Punkte: " + pointsA, false);
-  else h1("#ffffff", "Punkte: " + pointsB, false);
-  h2("#ffffff", roundB + ". Runde");
-  description("#ffffff", "Tausche aus und tippe zum Start.");
+  if (playerA === true) {
+    h3("#002d71", "Team Blau");
+    h1("#002d71", "Punkte: " + pointsA, false);
+    h2("#002d71", roundB + ". Runde");
+    description("#002d71", "Tausche aus und tippe zum Start.");
+  } else {
+    h3("#be0019", "Team Rot");
+    h1("#be0019", "Punkte: " + pointsB, false);
+    h2("#be0019", roundB + ". Runde");
+    description("#be0019", "Tausche aus und tippe zum Start.");
+  }
   pop();
 }
 
@@ -405,6 +412,16 @@ function h2(fCol, h2Text) {
   textWrap(WORD);
   textLeading(height / 20);
   text(h2Text, 0, height / 18, height - height / 5, width - height / 5);
+}
+
+function h3(fCol, h3Text) {
+  textFont(Bold);
+  textSize(height / 40);
+  fill(fCol);
+  textAlign(CENTER, CENTER);
+  textWrap(WORD);
+  textLeading(height / 20);
+  text(h3Text, 0, -width / 4, height - height / 5, width - height / 5);
 }
 
 function description(fCol, desText) {

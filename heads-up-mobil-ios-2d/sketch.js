@@ -195,7 +195,7 @@ let bar = 0;
 let roundA = 1;
 let roundB = 1;
 let time, barTime, sectionTime;
-let sectionTimeOut = 120000; //1s (1000 milliseconds)
+let sectionTimeOut = 90000; //1s (1000 milliseconds)
 //et sectionTimeOut = 10000; //test
 
 let playerA = true;
@@ -209,6 +209,7 @@ function preload() {
   Regular = loadFont("OpenSans-Regular.ttf");
   Bold = loadFont("OpenSans-Bold.ttf");
   ExtraBold = loadFont("OpenSans-ExtraBold.ttf");
+  img = loadImage("./Bissantz-Logo_1000x100px_weiss.png");
 }
 
 function setup() {
@@ -392,16 +393,16 @@ function pause() {
   push();
   translate(width / 2, height / 2);
   rotate(HALF_PI);
-
+  logo(0);
   if (playerA === true) {
-    h3("#002d71", "Team Blau");
+    // h3("#002d71", "Team Blau");
     h1("#002d71", "Punkte: " + pointsA, false);
-    h2("#002d71", roundB + ". Runde");
+    h2("#002d71", roundB + ". Runde für Team Blau");
     description("#002d71", "Tausche aus und tippe zum Start.");
   } else {
-    h3("#be0019", "Team Rot");
+    // h3("#be0019", "Team Rot");
     h1("#be0019", "Punkte: " + pointsB, false);
-    h2("#be0019", roundB + ". Runde");
+    h2("#be0019", roundB + ". Runde für Team Blau");
     description("#be0019", "Tausche aus und tippe zum Start.");
   }
   pop();
@@ -512,6 +513,12 @@ function description(fCol, desText) {
   textWrap(WORD);
   textLeading(height / 30);
   text(desText, 0, width / 4, height - height / 5, width - height / 5);
+}
+
+function logo(col) {
+  imageMode(CENTER);
+  tint(col);
+  image(img, 0, -width / 4, 400, 40);
 }
 
 function processBar() {
