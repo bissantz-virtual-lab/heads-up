@@ -130,13 +130,13 @@ function shuffleArray(array) {
 
 function startPage() {
   if (gameOn === false) {
-    if (gammaR >= -90 && gammaR <= 0) {
+    /* if (gammaR >= -90 && gammaR <= 0) {
       let rotationUp = map(gammaR, -90, 0, 0, PI);
       rotateY(rotationUp);
     } else if (gammaR <= 90 && gammaR >= 0) {
       let rotationDown = map(gammaR, 90, 0, 0, -PI);
       rotateY(rotationDown);
-    }
+    }*/
     push();
     card("#ffffff");
     translate(0, 0, 100);
