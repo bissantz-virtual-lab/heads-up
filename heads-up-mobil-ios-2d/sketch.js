@@ -210,6 +210,7 @@ function preload() {
   Bold = loadFont("OpenSans-Bold.ttf");
   ExtraBold = loadFont("OpenSans-ExtraBold.ttf");
   img = loadImage("./Bissantz-Logo_1000x100px_weiss.png");
+  //img = loadImage("./bvl_Logo.png");
 }
 
 function setup() {
@@ -241,7 +242,7 @@ function setup() {
 function draw() {
   if (!permissionGranted) {
     computer();
-    return;
+    //return;
   }
 
   R = int(rotationY * 100);
@@ -321,8 +322,13 @@ function shuffleArray(array) {
 
 function computer() {
   bg("#002d71");
-  h1Com("#ffffff", "Hi,");
-  h2Com("#ffffff", "bist du auf iOS?");
+
+  imageMode(CENTER);
+  tint(255);
+  image(img, width / 2, height / 7, 200, 20);
+
+  h1Com("#ffffff", "Hallo!");
+  h2Com("#ffffff", "Bist du auf iOS?");
   descriptionCom(
     "#ffffff",
     "Zum Starten des Spiels bitte den Sensor aktivieren und das Gerät umdrehen."
@@ -335,6 +341,9 @@ function startPage() {
     push();
     translate(width / 2, height / 2);
     rotate(HALF_PI);
+    imageMode(CENTER);
+    tint(0);
+    image(img, 0, -width / 4, 200, 20);
     h1("#000000", "Heads Up!", false);
     if (pointsA <= 0) pointsA = 0;
     h2("#000000", "Tippe zum Start. ");
@@ -518,7 +527,7 @@ function description(fCol, desText) {
 function logo(col) {
   imageMode(CENTER);
   tint(col);
-  image(img, 0, -width / 4, 400, 40);
+  image(img, 0, -width / 3, 300, 30);
 }
 
 function processBar() {
